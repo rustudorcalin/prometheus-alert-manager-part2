@@ -137,13 +137,11 @@ Few words about the two used rules in the above example:
 
 All the metrics can be found [here](https://github.com/google/cadvisor/blob/master/metrics/prometheus.go).
 
-All regular expressions in Prometheus use RE2 syntax. https://github.com/google/re2/wiki/Syntax. Using regular expressions, we can select time series only for pods whose name match a certain pattern. In our case, we look for pods that start with `nginx-` and exclude "POD" as this is the parent [cgroup](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cgroup-drivers) for the container and will show stats for all containers inside the pod.
+All regular expressions in Prometheus use [RE2 syntax](https://github.com/google/re2/wiki/Syntax). Using regular expressions, we can select time series only for pods whose name match a certain pattern. In our case, we look for pods that start with `nginx-` and exclude "POD" as this is the parent [cgroup](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cgroup-drivers) for the container and will show stats for all containers inside the pod.
  
-For container_cpu_usage_seconds_total, we use what it is called a Subquery. This returns the 5-minute rate of our metric.
+For container_cpu_usage_seconds_total, we use what it is called a `Subquery`. This returns the 5-minute rate of our metric.
  
 More info about queries and some examples can be found on the official Prometheus documentation [page](https://prometheus.io/docs/prometheus/latest/querying/basics/).
-
-
 
 ### Alerts
 
